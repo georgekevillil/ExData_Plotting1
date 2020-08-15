@@ -13,8 +13,11 @@ subdata$Sub_metering_1 <- as.numeric(subdata$Sub_metering_1)
 subdata$Sub_metering_2 <- as.numeric(subdata$Sub_metering_2)
 subdata$Sub_metering_3 <- as.numeric(subdata$Sub_metering_3)
 
+##Ploting
+png("plot3.png", width=480, height=480)
 plot(y = subdata$Sub_metering_1, x = subdata$DateTime, type = "l", ylab = "Energy submetering", xlab = "" )
 lines(x = subdata$DateTime,subdata$Sub_metering_2,col = "red")
 lines(y = subdata$Sub_metering_3, x = subdata$DateTime, col = "blue")
-dev.copy(png, file ="plot3.png")
+legend("topright", col=c("black", "red", "blue"), lty=1, lwd=2,
+       legend=c("Sub_metering_1", "Sub_metering_2", "Sub_metering_3"))
 dev.off()
